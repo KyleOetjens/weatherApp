@@ -12,7 +12,7 @@ let currentWindText = document.querySelector('.currentWind')
 let currentHumidText = document.querySelector('.currentHumid')
 let currentWeatherIcon = document.querySelector('.currentWeatherIcon')
 let buttonContainer = $(`.btn-group-vertical`);
-let currentWeatherImg = document.querySelector(`currentWeatherIcon`)
+let currentWeatherImg = document.querySelector(`#currentWeatherIcon`)
 /*let apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=`+apiKey+`
 &q=$`+citySelect+`&units=imperial`;
 https://api.openweathermap.org/data/2.5/weather?appid=75baa2e1ca20f28d0a136b9d0eb3b22f&q=atlanta&units=imperial
