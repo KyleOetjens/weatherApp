@@ -1,14 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
     <title>Document</title>
 </head>
+
 <body>
     <header id="header">Weather Dashboard</header>
-    
+    <h1>Search for a City</h1>
+    <div class="test">
+        <div class="row">
+            <form id="city-input">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input type="text" class="form-control cityText" id="formGroupExampleInput"
+                        placeholder="ex. Atlanta">
+                </div>
+                <button type="submit" class="btn btn-primary searchBtn">Search</button>
+            </form>
+            <hr>
+            <div class="btn-group-vertical col-4" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Atlanta</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Denver</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Seattle</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">San Francisco</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Orlando</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">New York</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Chicago</button>
+                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Minneapolis</button>
+            </div>
+            <div class="card col-8" style="width: align-self: unset;">
+                <div class="card-body">
+                    <h5 class="card-title cityCurrentNameDate">Cuurent city Name and Date <img id="currentWeatherIcon" src="https://openweathermap.org/img/w/$data.weather[0].icon.png"></h5>
+                    <p class="currentTemp card-text">Current city temp</p>
+                    <p class="currentWind card-text">Current city wind</p>
+                    <p class="card-text currentHumid">Current city humidity</p>
+                </div>
+            </div>
+            <h2>5-Day Forcast</h2>
+            <section style="display: flex;">
+                <div class="card">
+                    <div class="card-body" style="width: 18rem;">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="width: 18rem;">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="width: 18rem;">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="width: 18rem;">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" style="width: 18rem;">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>
