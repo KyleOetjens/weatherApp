@@ -22,7 +22,7 @@ https://api.openweathermap.org/data/2.5/weather?appid=75baa2e1ca20f28d0a136b9d0e
 
 //get weather data based on button clicks, do not need local storage,
 // consider loading data on page load so that card is populated( would need local storage)
-cityButton.on('click',function () {
+function test() {
     const $el = $(this)
     console.log($el);
     let citySelect = $el.text()
@@ -48,12 +48,13 @@ cityButton.on('click',function () {
                     currentHumidText.textContent = `Humidity: ` + humid + `%`
                    currentWeatherImg.src= `https://openweathermap.org/img/w/$`+weatherIcon + `.png`;
                    console.log(currentWeatherImg);
-                   
+                   //var iconSrc = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
                     getFiveDayForcast(lat, lon)
                 });
             }
         })
-})
+}
+cityButton.on('click',test)
 //think about generating 5 day forcast dynamically
 //get weather data from typed entry, need to use local storage
 //and generate a new button
@@ -90,8 +91,8 @@ const newCityWeather = function (event) {
                         currentTempText.textContent = `Temp: High: ` + cityTempHigh + `°F` + `,   Low: ` + cityTempLow + `°F`
                         currentWindText.textContent = `Wind: ` + wind + ` MPH`
                         currentHumidText.textContent = `Humidity: ` + humid + `%`
-                        currentWeatherIcon.textContent = weatherIcon
                         let newCityBtn = document.createElement('button');
+                       newCityBtn.addEventListener("click",test)
                         document.querySelector ('.btn-group-vertical').appendChild(newCityBtn);
                         newCityBtn.setAttribute("type", 'button');
                         newCityBtn.setAttribute(`class`,`btn cityBtn btn-secondary`);
