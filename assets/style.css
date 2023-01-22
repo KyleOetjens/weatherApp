@@ -13,13 +13,34 @@ body {
 }
 #header {
     color: white;
-    background-color: #21219e;
+    /*background-color: #21219e;*/
     width: 100%;
     margin: 0%;
     height: 100px;
     text-align: center;
-    font-size: large;
+    font-size: 75px;
+    background: linear-gradient(to right, #3366cc 0%, #0000cc 100%);
 }
-button {
+h2 {
+    margin-right: 30%;
+}
+.cityBtn {
     background-color: lightgray;
+    margin: 2px;
+    
+}
+.fiveCard {
+    background-color: #597484 ;
+    margin: 5px;
+}
+h5, p, img {
+    background-color: transparent;
+}
+.fiveDayCards {
+    margin: 5px;
+}
+
+#fiveDayContainer{
+    display: flex;
+justify-content: flex-end;
 }

@@ -26,70 +26,25 @@
             </form>
             <hr>
             <div class="btn-group-vertical col-4" role="group" aria-label="Vertical button group">
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Atlanta</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Denver</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Seattle</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">San Francisco</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Orlando</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">New York</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Chicago</button>
-                <button type="button" class="btn btn-secondary cityBtn" style="margin: 2px;">Minneapolis</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Denver</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Atlanta</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Seattle</button>
+                <button type="button" class="btn btn-secondary cityBtn" >San Francisco</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Orlando</button>
+                <button type="button" class="btn btn-secondary cityBtn" >New York</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Minneapolis</button>
+                <button type="button" class="btn btn-secondary cityBtn" >Chicago</button>
             </div>
-            <div class="card col-8" style="width: align-self: unset;">
+            <div class="card col-8" >
                 <div class="card-body">
-                    <h5 class="card-title cityCurrentNameDate">Cuurent city Name and Date </h5> <img id="currentWeatherIcon" src="https://openweathermap.org/img/w/$data.weather[0].icon.png">
+                    <h5 class="card-title cityCurrentNameDate">Curent city Name and Date </h5> <img id="currentWeatherIcon" src="https://openweathermap.org/img/w/$data.weather[0].icon.png">
                     <p class="currentTemp card-text">Current city temp</p>
                     <p class="currentWind card-text">Current city wind</p>
                     <p class="card-text currentHumid">Current city humidity</p>
                 </div>
             </div>
             <h2>5-Day Forcast</h2>
-            <section style="display: flex;">
-                <div class="card">
-                    <div class="card-body" style="width: 18rem;">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body" style="width: 18rem;">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body" style="width: 18rem;">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body" style="width: 18rem;">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body" style="width: 18rem;">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
+            <section id="fiveDayContainer" >
             </section>
         </div>
     </div>

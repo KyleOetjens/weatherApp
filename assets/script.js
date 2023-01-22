@@ -13,15 +13,9 @@ let currentHumidText = document.querySelector('.currentHumid')
 let currentWeatherIcon = document.querySelector('.currentWeatherIcon')
 let buttonContainer = $(`.btn-group-vertical`);
 let currentWeatherImg = document.querySelector(`#currentWeatherIcon`)
-/*let apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=`+apiKey+`
-&q=$`+citySelect+`&units=imperial`;
-https://api.openweathermap.org/data/2.5/weather?appid=75baa2e1ca20f28d0a136b9d0eb3b22f&q=atlanta&units=imperial
-https://api.openweathermap.org/data/2.5/weather?appid=$75baa2e1ca20f28d0a136b9d0eb3b22f&q=$atlanta&units=imperial
-https://api.openweathermap.org/data/2.5/weather?appid=75baa2e1ca20f28d0a136b9d0eb3b22f&q=atlanta&units=imperial
-*/
+let fiveDayBlock = $(`#fiveDayContainer`)
+let ctyBtn= []
 
-//get weather data based on button clicks, do not need local storage,
-// consider loading data on page load so that card is populated( would need local storage)
 function test() {
     const $el = $(this)
     console.log($el);
@@ -48,24 +42,16 @@ function test() {
                     currentHumidText.textContent = `Humidity: ` + humid + `%`
                     currentWeatherImg.src = `https://openweathermap.org/img/w/` + weatherIcon + `.png`;
                     console.log(currentWeatherImg);
-                    //var iconSrc = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
                     getFiveDayForcast(lat, lon)
                 });
             }
         })
 }
 cityButton.on('click', test)
-//think about generating 5 day forcast dynamically
-//get weather data from typed entry, need to use local storage
-//and generate a new button
 
 const newCityWeather = function (event) {
     event.preventDefault();
     let cityType = cityInputEl.value.trim();
-    /*  const $el = $(this)
-      console.log($el);
-      let citySelect = $el.text()
-      console.log(citySelect);*/
     if (cityType !== "") {
         console.log("this part works");
         textCurrentWeather(cityType)
@@ -99,8 +85,7 @@ let textCurrentWeather = function (cityType) {
                     newCityBtn.setAttribute(`class`, `btn cityBtn btn-secondary`);
                     newCityBtn.textContent = cityName;
                     currentWeatherImg.src = `https://openweathermap.org/img/w/` + weatherIcon + `.png`;
-                    // consider let li = document.createElement('li')
-                    //document.querySelector('ul').appendChild(li)
+                    localStorage.setItem("city",JSON.stringify(cityType))
                     getFiveDayForcast(lat, lon)
                 });
             }
@@ -109,19 +94,45 @@ let textCurrentWeather = function (cityType) {
 userFormEl.addEventListener('submit', newCityWeather);
 const getFiveDayForcast = function (lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=` + lat + `&lon=` + lon + `&units=imperial&appid=` + apiKey)
-        .then(function (response){
-            console.log("made it here");
+        .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data){
-                    console.log(data);
-                    let date = data.list[2];
-                    console.log(date);
-                    for (let index = 2; index < data.length; index+8) {
-                        const element = data.list[index];
-                        console.log(element[index]);
-                        
+                response.json().then(function (data) {
+                    let weatherList = data.list
+                    fiveDayBlock.empty()
+                    for (let index = 5; index < weatherList.length; index += 8) {
+                        const element = weatherList[index];
+                        const fiveDayWeather = weatherList[index].dt_txt;
+                        const fiveDayIcon = weatherList[index].weather[0].icon;
+                        const fiveDayHighTemp = weatherList[index].main.temp_max;
+                        const fiveDayWind = weatherList[index].wind.speed;
+                        const fiveDayHumid = weatherList[index].main.humidity;
+                        let cardDiv = document.createElement('div')
+                        let cardBodyDiv = document.createElement('div')
+                        let cardDate = document.createElement('h5')
+                        let cardImg = document.createElement('img')
+                        let cardTempP = document.createElement('p')
+                        let cardWindP = document.createElement('p')
+                        let cardHumidP = document.createElement('p')
+                        cardBodyDiv.setAttribute("class","fiveDayCards")
+                        fiveDayBlock.append(cardDiv)
+                        cardDiv.appendChild(cardBodyDiv)
+                        cardBodyDiv.appendChild(cardDate)
+                        cardBodyDiv.appendChild(cardImg)
+                        cardBodyDiv.appendChild(cardTempP)
+                        cardBodyDiv.appendChild(cardWindP)
+                        cardBodyDiv.appendChild(cardHumidP)
+
+                        cardDate.textContent = fiveDayWeather
+                        cardImg.src = `https://openweathermap.org/img/w/` + fiveDayIcon + `.png`;
+                        cardTempP.textContent = (`Temp: `+fiveDayHighTemp + ' °F')
+                        cardWindP.textContent = (`Wind: `+fiveDayWind + ' MPH')
+                        cardHumidP.textContent = (`Humidity: `+fiveDayHumid + '%')
+                        cardBodyDiv.setAttribute("class","fiveCard")
+
                     }
                 })
             }
         })
 }
+
+
