@@ -27,8 +27,11 @@ h2 {
 .cityBtn {
     background-color: lightgray;
     margin: 2px;
-    
+    max-height: 20%;
 }
+.btn-group-vertical{
+    display: block;
+  }
 .fiveCard {
     background-color: #597484 ;
     margin: 5px;
