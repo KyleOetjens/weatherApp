@@ -24,14 +24,13 @@ function createCityBtn() {
     }
     makeBtn()
 }
-
 createCityBtn()
 function makeBtn() {
     buttonContainer.empty()
     for (let index = 0; index < ctyBtn.length; index++) {
         let newCityBtn = document.createElement('button');
         newCityBtn.addEventListener("click", test)
-        document.querySelector('.btn-group-vertical').appendChild(newCityBtn);
+        document.querySelector('.btn-group-vertical').prepend(newCityBtn);
         newCityBtn.setAttribute("type", 'button');
         newCityBtn.setAttribute(`class`, `btn cityBtn btn-secondary`);
         newCityBtn.textContent = ctyBtn[index];
@@ -39,9 +38,7 @@ function makeBtn() {
 }
 function test() {
     const $el = $(this)
-    console.log($el);
     let citySelect = $el.text()
-    console.log(citySelect);
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?appid=` + apiKey + `&q=` + citySelect + `&units=imperial`)
         .then(function (response) {
@@ -55,14 +52,11 @@ function test() {
                     const wind = data.wind.speed
                     const humid = data.main.humidity
                     const weatherIcon = data.weather[0].icon
-                    console.log(data);
-                    console.log(lat, lon, cityName, cityTempHigh, cityTempLow, wind, humid);
                     currentCityText.textContent = cityName
                     currentTempText.textContent = `Temp: High: ` + cityTempHigh + `°F` + `,   Low: ` + cityTempLow + `°F`
                     currentWindText.textContent = `Wind: ` + wind + ` MPH`
                     currentHumidText.textContent = `Humidity: ` + humid + `%`
                     currentWeatherImg.src = `https://openweathermap.org/img/w/` + weatherIcon + `.png`;
-                    console.log(currentWeatherImg);
                     getFiveDayForcast(lat, lon)
                 });
             }
@@ -92,8 +86,6 @@ let textCurrentWeather = function (cityType) {
                     const wind = data.wind.speed
                     const humid = data.main.humidity
                     const weatherIcon = data.weather[0].icon
-                    console.log(data);
-                    console.log(lat, lon, cityName, cityTempHigh, cityTempLow, wind, humid);
                     currentCityText.textContent = cityName
                     currentTempText.textContent = `Temp: High: ` + cityTempHigh + `°F` + `,   Low: ` + cityTempLow + `°F`
                     currentWindText.textContent = `Wind: ` + wind + ` MPH`
@@ -138,14 +130,12 @@ const getFiveDayForcast = function (lat, lon) {
                         cardBodyDiv.appendChild(cardTempP)
                         cardBodyDiv.appendChild(cardWindP)
                         cardBodyDiv.appendChild(cardHumidP)
-
                         cardDate.textContent = dayjs.unix(fiveDayWeather).format('M/D/YYYY')
                         cardImg.src = `https://openweathermap.org/img/w/` + fiveDayIcon + `.png`;
                         cardTempP.textContent = (`Temp: ` + fiveDayHighTemp + ' °F')
                         cardWindP.textContent = (`Wind: ` + fiveDayWind + ' MPH')
                         cardHumidP.textContent = (`Humidity: ` + fiveDayHumid + '%')
                         cardBodyDiv.setAttribute("class", "fiveCard")
-
                     }
                 })
             }
