@@ -51,8 +51,10 @@ function test() {
                     const cityTempLow = data.main.temp_min
                     const wind = data.wind.speed
                     const humid = data.main.humidity
+                    const todaysDateUnix = data.dt
+                    const tadaysDate = dayjs.unix(todaysDateUnix).format('MM/DD/YYYY')
                     const weatherIcon = data.weather[0].icon
-                    currentCityText.textContent = cityName
+                    currentCityText.textContent = cityName + ` ` + tadaysDate
                     currentTempText.textContent = `Temp: High: ` + cityTempHigh + `°F` + `,   Low: ` + cityTempLow + `°F`
                     currentWindText.textContent = `Wind: ` + wind + ` MPH`
                     currentHumidText.textContent = `Humidity: ` + humid + `%`
@@ -86,7 +88,9 @@ let textCurrentWeather = function (cityType) {
                     const wind = data.wind.speed
                     const humid = data.main.humidity
                     const weatherIcon = data.weather[0].icon
-                    currentCityText.textContent = cityName
+                    const todaysDateUnix = data.dt
+                    const todaysDate = dayjs.unix(todaysDateUnix).format('MM/DD/YYYY')
+                    currentCityText.textContent = cityName + ` ` + todaysDate
                     currentTempText.textContent = `Temp: High: ` + cityTempHigh + `°F` + `,   Low: ` + cityTempLow + `°F`
                     currentWindText.textContent = `Wind: ` + wind + ` MPH`
                     currentHumidText.textContent = `Humidity: ` + humid + `%`
@@ -108,7 +112,7 @@ const getFiveDayForcast = function (lat, lon) {
                 response.json().then(function (data) {
                     let weatherList = data.list
                     fiveDayBlock.empty()
-                    for (let index = 3; index < weatherList.length; index += 8) {
+                    for (let index = 7; index < weatherList.length; index += 8) {
                         const element = weatherList[index];
                         const fiveDayWeather = weatherList[index].dt;
                         const fiveDayIcon = weatherList[index].weather[0].icon;

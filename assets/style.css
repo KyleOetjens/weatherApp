@@ -27,7 +27,7 @@ h2 {
 .cityBtn {
     background-color: lightgray;
     margin: 2px;
-    max-height: 20%;
+    height: 35px;
 }
 .btn-group-vertical{
     display: block;
